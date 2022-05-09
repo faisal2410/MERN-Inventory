@@ -7,6 +7,9 @@ const ExpenseListController = require("../controllers/ExpenseListController");
 const CustomerController = require("../controllers/CustomerController");
 const CategoryController = require("../controllers/CategoryController");
 const BrandController = require("../controllers/BrandController");
+const ProductController = require("../controllers/ProductController");
+
+
 
 const router =express.Router();
 
@@ -62,6 +65,10 @@ router.get("/DeleteBrandType/:BrandID",AuthVerifyMiddleware,BrandController.Dele
 router.get("/ReadBrandType",AuthVerifyMiddleware,BrandController.ReadBrandType);
 
 
-
+// Product
+router.get("/ReadProduct",AuthVerifyMiddleware,ProductController.ReadProduct);
+router.get("/DeleteProduct/:ProductID",AuthVerifyMiddleware,ProductController.DeleteProduct);
+router.post("/CreateProduct",AuthVerifyMiddleware,ProductController.CreateProduct);
+router.post("/UpdateProduct/:ProductID",AuthVerifyMiddleware,ProductController.UpdateProduct);
 
 module.exports=router;

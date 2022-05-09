@@ -9,5 +9,5 @@ const DataSchema=mongoose.Schema({
     Details:{type:String},
     CreatedDate:{type:Date,default:Date.now()}
 },{versionKey:false});
-const CategoryModel=mongoose.model('categories',DataSchema);
-module.exports=CategoryModel
+const ProductModel=mongoose.model('products',DataSchema);
+module.exports=ProductModel

@@ -1,7 +1,9 @@
+const ProductModel = require("../models/ProductModel");
 const ExpenseListModel = require("../models/ExpenseListModel");
-exports.CreateExpenseList=(req,res)=>{
+
+exports.CreateProduct=(req,res)=>{
     let reqBody=req.body;
-    ExpenseListModel.create(reqBody,(err,data)=>{
+    ProductModel.create(reqBody,(err,data)=>{
         if(err){
             res.status(400).json({status:"fail",data:err})
         }
@@ -11,22 +13,12 @@ exports.CreateExpenseList=(req,res)=>{
     })
 }
 
-exports.UpdateExpenseList=(req,res)=>{
-    let ExpenseID= req.params.ExpenseID;
-    let Query={ExpenseID:ExpenseID};
+
+exports.UpdateProduct=(req,res)=>{
+    let ProductID= req.params.ProductID;
+    let Query={ProductID:ProductID};
     let reqBody=req.body;
-    ExpenseListModel.updateOne(Query,reqBody,(err,data)=>{
-        if(err){
-            res.status(400).json({status:"fail",data:err})
-        }
-        else{
-            res.status(200).json({status:"success",data:data})
-        }
-    })
-}
-
-exports.ReadExpenseList=(req,res)=>{
-    ExpenseListModel.aggregate([{$lookup: {from: "expensetypes", localField: "TypeID", foreignField: "TypeID", as: "Type"}}],(err,data)=>{
+    ProductModel.updateOne(Query,reqBody,(err,data)=>{
         if(err){
             res.status(400).json({status:"fail",data:err})
         }
@@ -37,10 +29,25 @@ exports.ReadExpenseList=(req,res)=>{
 }
 
 
-exports.DeleteExpenseList=(req,res)=>{
-    let ExpenseID= req.params.ExpenseID;
-    let Query={ExpenseID:ExpenseID};
-    ExpenseListModel.remove(Query,(err,data)=>{
+exports.DeleteProduct=(req,res)=>{
+    let ProductID= req.params.ProductID;
+    let Query={ProductID:ProductID};
+    ProductModel.remove(Query,(err,data)=>{
+        if(err){
+            res.status(400).json({status:"fail",data:err})
+        }
+        else{
+            res.status(200).json({status:"success",data:data})
+        }
+    })
+}
+
+
+exports.ReadProduct=(req,res)=>{
+    ProductModel.aggregate([
+        {$lookup: {from: "categories", localField: "CategoryID", foreignField: "CategoryID", as: "Category"}},
+        {$lookup: {from: "brands", localField: "BrandID", foreignField: "BrandID", as: "Brand"}}
+    ],(err,data)=>{
         if(err){
             res.status(400).json({status:"fail",data:err})
         }
