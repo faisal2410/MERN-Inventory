@@ -2,31 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="78c434c8-ed88-493b-8027-8aa7bd69ca6d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/controllers/SellController.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/models/SellModel.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/models/SellProductModel.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inventory-mern.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/BrandController.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/BrandController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/CategoryController.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/CategoryController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/CustomerController.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/CustomerController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/ExpenseListController.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/ExpenseListController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/ExpenseTypeController.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/ExpenseTypeController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/ProductController.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/ProductController.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/controllers/ReturnController.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/models/ReturnModel.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/models/ReturnProductModel.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controllers/PurchaseController.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/PurchaseController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/SupplierController.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/SupplierController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/UsersController.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/UsersController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/BrandModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/BrandModel.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/CategoryModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/CategoryModel.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/CustomerModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/CustomerModel.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/ExpenseListModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/ExpenseListModel.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/ExpenseTypeModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/ExpenseTypeModel.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/ProductModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/ProductModel.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/models/PurchaseModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/PurchaseModel.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/PurchaseProductModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/PurchaseProductModel.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/SupplierModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/SupplierModel.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/UsersModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/UsersModel.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/routes/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/api.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -61,6 +42,7 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="H:\VIGO\MERN-Inventory\server-side\src\models" />
+      <recent name="H:\VIGO\MERN-Inventory\server-side\src\controllers" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -71,7 +53,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1652192226050</updated>
-      <workItem from="1652192227349" duration="8198000" />
+      <workItem from="1652192227349" duration="9679000" />
     </task>
     <servers />
   </component>

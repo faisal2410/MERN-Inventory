@@ -10,6 +10,9 @@ const BrandController = require("../controllers/BrandController");
 const ProductController = require("../controllers/ProductController");
 const PurchaseController = require("../controllers/PurchaseController");
 const SellController = require("../controllers/SellController");
+const ReturnController = require("../controllers/ReturnController");
+
+
 
 const router =express.Router();
 
@@ -84,5 +87,11 @@ router.get("/ReadSell",AuthVerifyMiddleware,SellController.ReadSell);
 router.get("/ReadSellProducts/:SellID",AuthVerifyMiddleware,SellController.ReadSellProducts);
 router.get("/DeleteSell/:SellID",AuthVerifyMiddleware,SellController.DeleteSell);
 
+
+//Return
+router.post("/CreateReturn",AuthVerifyMiddleware,ReturnController.CreateReturn);
+router.get("/ReadReturn",AuthVerifyMiddleware,ReturnController.ReadReturn);
+router.get("/ReadReturnProducts/:ReturnID",AuthVerifyMiddleware,ReturnController.ReadReturnProducts);
+router.get("/DeleteReturn/:ReturnID",AuthVerifyMiddleware,ReturnController.DeleteReturn);
 
 module.exports=router;
