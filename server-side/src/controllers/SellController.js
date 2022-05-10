@@ -1,23 +1,25 @@
-const PurchaseModel = require("../models/PurchaseModel");
-const PurchaseProductModel = require("../models/PurchaseProductModel");
+const SellModel = require("../models/SellModel");
+const SellProductModel = require("../models/SellProductModel");
 
-exports.CreatePurchase=(req,res)=>{
+exports.CreateSell=(req,res)=>{
     let reqBody=req.body;
-    let Purchase={
-        "SupplierID":reqBody['SupplierID'],
-        "PurchaseID":reqBody['PurchaseID'],
+    let Sell={
+        "CustomerID":reqBody['CustomerID'],
+        "SellID":reqBody['SellID'],
         "VatTax":reqBody['VatTax'],
         "OtherCost":reqBody['OtherCost'],
+        "Discount":reqBody['Discount'],
         "GrandTotal":reqBody['GrandTotal'],
         "Note":reqBody['Note']
     }
+
     let Products=reqBody['Products']
-    PurchaseModel.create(Purchase,(err,data)=>{
+    SellModel.create(Sell,(err,data)=>{
         if(err){
             res.status(400).json({status:"fail",data:err})
         }
         else {
-            PurchaseProductModel.insertMany(Products,(err2,data2)=>{
+            SellProductModel.insertMany(Products,(err2,data2)=>{
                 if(err){
                     res.status(400).json({status:"fail",data:err2})
                 }
@@ -29,9 +31,9 @@ exports.CreatePurchase=(req,res)=>{
     })
 }
 
-exports.ReadPurchase=(req,res)=>{
-    PurchaseModel.aggregate([
-        {$lookup: {from: "suppliers", localField: "SupplierID", foreignField: "SupplierID", as: "Supplier"}}
+exports.ReadSell=(req,res)=>{
+    SellModel.aggregate([
+        {$lookup: {from: "customers", localField: "CustomerID", foreignField: "CustomerID", as: "customers"}}
     ],(err,data)=>{
         if(err){
             res.status(400).json({status:"fail",data:err})
@@ -42,17 +44,15 @@ exports.ReadPurchase=(req,res)=>{
     })
 }
 
-exports.ReadPurchaseProducts=(req,res)=>{
-    let PurchaseID= req.params.PurchaseID;
-    let Query={PurchaseID:parseInt(PurchaseID)};
-
-    PurchaseProductModel.aggregate([
+exports.ReadSellProducts=(req,res)=>{
+    let SellID= req.params.SellID;
+    let Query={SellID:parseInt(SellID)};
+    SellProductModel.aggregate([
         {$match:Query},
         {$lookup: {from: "products",localField: "ProductID",foreignField: "ProductID",as: "products"}},
         {$unwind: "$products"},
         {$lookup: {from: "brands",localField: "products.BrandID",foreignField: "BrandID",as: "products.brands"}},
         {$lookup: {from: "categories",localField: "products.CategoryID",foreignField: "CategoryID",as: "products.categories"}},
-
     ],(err,data)=>{
         if(err){
             res.status(400).json({status:"fail",data:err})
@@ -64,16 +64,16 @@ exports.ReadPurchaseProducts=(req,res)=>{
 }
 
 
-exports.DeletePurchase=(req,res)=>{
-    let PurchaseID= req.params.PurchaseID;
-    let Query={PurchaseID:parseInt(PurchaseID)};
+exports.DeleteSell=(req,res)=>{
+    let SellID= req.params.SellID;
+    let Query={SellID:parseInt(SellID)};
 
-    PurchaseModel.remove(Query,(err,data)=>{
+    SellModel.remove(Query,(err,data)=>{
         if(err){
             res.status(400).json({status:"fail",data:err})
         }
         else {
-            PurchaseProductModel.remove(Query,(err2,data2)=>{
+            SellProductModel.remove(Query,(err2,data2)=>{
                 if(err){
                     res.status(400).json({status:"fail",data:err2})
                 }
@@ -84,7 +84,6 @@ exports.DeletePurchase=(req,res)=>{
         }
     })
 }
-
 
 
 
