@@ -1,31 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="78c434c8-ed88-493b-8027-8aa7bd69ca6d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/controllers/ReturnController.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/models/ReturnModel.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/models/ReturnProductModel.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/PurchaseController.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/PurchaseController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/PurchaseModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/PurchaseModel.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/api.js" afterDir="false" />
+    <list default="true" id="67df86f3-41cf-4743-afc3-97f27390e517" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/server-side.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="JavaScript File" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProjectId" id="28ycNVphv1S7gaEOEVGbwlJ6X0k" />
+  <component name="ProjectId" id="291uBgKBKbsWwHiM1KLz8LPbg7p" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -35,25 +25,17 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/models" />
-    <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
-  </component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="H:\VIGO\MERN-Inventory\server-side\src\models" />
-      <recent name="H:\VIGO\MERN-Inventory\server-side\src\controllers" />
-    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="78c434c8-ed88-493b-8027-8aa7bd69ca6d" name="Changes" comment="" />
-      <created>1652192226050</created>
+      <changelist id="67df86f3-41cf-4743-afc3-97f27390e517" name="Changes" comment="" />
+      <created>1652292785453</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1652192226050</updated>
-      <workItem from="1652192227349" duration="9679000" />
+      <updated>1652292785453</updated>
+      <workItem from="1652292787465" duration="5000" />
     </task>
     <servers />
   </component>
