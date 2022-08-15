@@ -1,97 +1,131 @@
 const express =require('express');
-const UsersController=require("../controllers/UsersController");
-const SupplierController=require("../controllers/SupplierController")
-const ExpenseTypeController=require("../controllers/ExpenseTypeController")
-const AuthVerifyMiddleware=require("../middleware/AuthVerifyMiddleware");
-const ExpenseListController = require("../controllers/ExpenseListController");
-const CustomerController = require("../controllers/CustomerController");
-const CategoryController = require("../controllers/CategoryController");
-const BrandController = require("../controllers/BrandController");
-const ProductController = require("../controllers/ProductController");
-const PurchaseController = require("../controllers/PurchaseController");
-const SellController = require("../controllers/SellController");
-const ReturnController = require("../controllers/ReturnController");
+const AuthVerifyMiddleware=require("../middlewares/AuthVerifyMiddleware");
 
+const UsersController=require("../controllers/Users/UsersController");
+const BrandsController=require("../controllers/Brands/BrandsController");
+
+const CategoriesController = require("../controllers/Categories/CategoriesController");
+const CustomersController = require("../controllers/Customers/CustomersController");
+const SuppliersController = require("../controllers/Suppliers/SuppliersController");
+const ExpenseTypesController = require("../controllers/Expenses/ExpenseTypesController");
+const ExpensesController = require("../controllers/Expenses/ExpensesController");
+const ProductsController = require("../controllers/Products/ProductsController");
+const PurchasesController = require("../controllers/Purchases/PurchasesController");
+const SalesController = require("../controllers/Sales/SalesController");
+const ReturnsController = require("../controllers/Returns/ReturnsController");
 
 
 const router =express.Router();
 
-router.post("/UserLogin",UsersController.UserLogin)
+
+// User Profile
+router.post("/Registration",UsersController.Registration);
+router.post("/Login",UsersController.Login);
+router.post("/ProfileUpdate",AuthVerifyMiddleware,UsersController.ProfileUpdate);
+router.get("/ProfileDetails",AuthVerifyMiddleware,UsersController.ProfileDetails);
+router.get("/RecoverVerifyEmail/:email",UsersController.RecoverVerifyEmail);
+router.get("/RecoverVerifyOTP/:email/:otp",UsersController.RecoverVerifyOTP);
+router.post("/RecoverResetPass",UsersController.RecoverResetPass);
 
 
-// User
-router.post("/CreateUser",AuthVerifyMiddleware,UsersController.CreateUser)
-router.post("/UpdateUser/:UserID",AuthVerifyMiddleware,UsersController.UpdateUser)
-router.get("/ReadUser",AuthVerifyMiddleware,UsersController.ReadUser)
-router.get("/DeleteUser/:UserID",AuthVerifyMiddleware,UsersController.DeleteUser)
+// Brands
+router.post("/CreateBrand",AuthVerifyMiddleware,BrandsController.CreateBrand);
+router.post("/UpdateBrand/:id",AuthVerifyMiddleware,BrandsController.UpdateBrand);
+router.get("/BrandList/:pageNo/:perPage/:searchKeyword",AuthVerifyMiddleware,BrandsController.BrandList);
+router.get("/BrandDropDown",AuthVerifyMiddleware,BrandsController.BrandDropDown);
 
 
-//Supplier
-router.post("/CreateSupplier",AuthVerifyMiddleware,SupplierController.CreateSupplier);
-router.post("/UpdateSupplier/:SupplierID",AuthVerifyMiddleware,SupplierController.UpdateSupplier);
-router.get("/DeleteSupplier/:SupplierID",AuthVerifyMiddleware,SupplierController.DeleteSupplier);
-router.get("/ReadSupplier",AuthVerifyMiddleware,SupplierController.ReadSupplier);
-
-// Expense Type
-router.post("/CreateExpenseType",AuthVerifyMiddleware,ExpenseTypeController.CreateExpenseType);
-router.post("/UpdateExpenseType/:TypeID",AuthVerifyMiddleware,ExpenseTypeController.UpdateExpenseType);
-router.get("/DeleteExpenseType/:TypeID",AuthVerifyMiddleware,ExpenseTypeController.DeleteExpenseType);
-router.get("/ReadExpenseType",AuthVerifyMiddleware,ExpenseTypeController.ReadExpenseType);
-
-
-// Expense List
-router.post("/CreateExpenseList",AuthVerifyMiddleware,ExpenseListController.CreateExpenseList);
-router.post("/UpdateExpenseList/:ExpenseID",AuthVerifyMiddleware,ExpenseListController.UpdateExpenseList);
-router.get("/DeleteExpenseList/:ExpenseID",AuthVerifyMiddleware,ExpenseListController.DeleteExpenseList);
-router.get("/ReadExpenseList",AuthVerifyMiddleware,ExpenseListController.ReadExpenseList);
-
-
-//Customer
-router.post("/CreateCustomer",AuthVerifyMiddleware,CustomerController.CreateCustomer);
-router.post("/UpdateCustomer/:CustomerID",AuthVerifyMiddleware,CustomerController.UpdateCustomer);
-router.get("/DeleteCustomer/:CustomerID",AuthVerifyMiddleware,CustomerController.DeleteCustomer);
-router.get("/ReadCustomer",AuthVerifyMiddleware,CustomerController.ReadCustomer);
-
-
-//Categories
-router.post("/CreateCategoryType",AuthVerifyMiddleware,CategoryController.CreateCategoryType);
-router.post("/UpdateCategoryType/:CategoryID",AuthVerifyMiddleware,CategoryController.UpdateCategoryType);
-router.get("/DeleteCategoryType/:CategoryID",AuthVerifyMiddleware,CategoryController.DeleteCategoryType);
-router.get("/ReadCategoryType",AuthVerifyMiddleware,CategoryController.ReadCategoryType);
+// Categories
+router.post("/CreateCategories",AuthVerifyMiddleware,CategoriesController.CreateCategories);
+router.post("/UpdateCategories/:id",AuthVerifyMiddleware,CategoriesController.UpdateCategories);
+router.get("/CategoriesList/:pageNo/:perPage/:searchKeyword",AuthVerifyMiddleware,CategoriesController.CategoriesList);
+router.get("/CategoriesDropDown",AuthVerifyMiddleware,CategoriesController.CategoriesDropDown);
 
 
 
-//Brands
-router.post("/CreateBrandType",AuthVerifyMiddleware,BrandController.CreateBrandType);
-router.post("/UpdateBrandType/:BrandID",AuthVerifyMiddleware,BrandController.UpdateBrandType);
-router.get("/DeleteBrandType/:BrandID",AuthVerifyMiddleware,BrandController.DeleteBrandType);
-router.get("/ReadBrandType",AuthVerifyMiddleware,BrandController.ReadBrandType);
+// Customers
+router.post("/CreateCustomers",AuthVerifyMiddleware,CustomersController.CreateCustomers);
+router.post("/UpdateCustomers/:id",AuthVerifyMiddleware,CustomersController.UpdateCustomers);
+router.get("/CustomersList/:pageNo/:perPage/:searchKeyword",AuthVerifyMiddleware,CustomersController.CustomersList);
+router.get("/CustomersDropDown",AuthVerifyMiddleware,CustomersController.CustomersDropDown);
 
 
-// Product
-router.get("/ReadProduct",AuthVerifyMiddleware,ProductController.ReadProduct);
-router.get("/DeleteProduct/:ProductID",AuthVerifyMiddleware,ProductController.DeleteProduct);
-router.post("/CreateProduct",AuthVerifyMiddleware,ProductController.CreateProduct);
-router.post("/UpdateProduct/:ProductID",AuthVerifyMiddleware,ProductController.UpdateProduct);
 
-//Purchase
-router.post("/CreatePurchase",AuthVerifyMiddleware,PurchaseController.CreatePurchase);
-router.get("/ReadPurchase",AuthVerifyMiddleware,PurchaseController.ReadPurchase);
-router.get("/ReadPurchaseProducts/:PurchaseID",AuthVerifyMiddleware,PurchaseController.ReadPurchaseProducts);
-router.get("/DeletePurchase/:PurchaseID",AuthVerifyMiddleware,PurchaseController.DeletePurchase);
+// Suppliers
+router.post("/CreateSuppliers",AuthVerifyMiddleware,SuppliersController.CreateSuppliers);
+router.post("/UpdateSuppliers/:id",AuthVerifyMiddleware,SuppliersController.UpdateSuppliers);
+router.get("/SuppliersList/:pageNo/:perPage/:searchKeyword",AuthVerifyMiddleware,SuppliersController.SuppliersList);
+router.get("/SuppliersDropDown",AuthVerifyMiddleware,SuppliersController.SuppliersDropDown);
 
 
-//Sell
-router.post("/CreateSell",AuthVerifyMiddleware,SellController.CreateSell);
-router.get("/ReadSell",AuthVerifyMiddleware,SellController.ReadSell);
-router.get("/ReadSellProducts/:SellID",AuthVerifyMiddleware,SellController.ReadSellProducts);
-router.get("/DeleteSell/:SellID",AuthVerifyMiddleware,SellController.DeleteSell);
+// ExpenseTypes
+router.post("/CreateExpenseTypes",AuthVerifyMiddleware,ExpenseTypesController.CreateExpenseTypes);
+router.post("/UpdateExpenseTypes/:id",AuthVerifyMiddleware,ExpenseTypesController.UpdateExpenseTypes);
+router.get("/ExpenseTypesList/:pageNo/:perPage/:searchKeyword",AuthVerifyMiddleware,ExpenseTypesController.ExpenseTypesList);
+router.get("/ExpenseTypesDropDown",AuthVerifyMiddleware,ExpenseTypesController.ExpenseTypesDropDown);
 
+// Expenses
+router.post("/CreateExpenses",AuthVerifyMiddleware,ExpensesController.CreateExpenses);
+router.post("/UpdateExpenses/:id",AuthVerifyMiddleware,ExpensesController.UpdateExpenses);
+router.get("/ExpensesList/:pageNo/:perPage/:searchKeyword",AuthVerifyMiddleware,ExpensesController.ExpensesList);
+
+// Products
+router.post("/CreateProducts",AuthVerifyMiddleware,ProductsController.CreateProducts);
+router.post("/UpdateProducts/:id",AuthVerifyMiddleware,ProductsController.UpdateProducts);
+router.get("/ProductsList/:pageNo/:perPage/:searchKeyword",AuthVerifyMiddleware,ProductsController.ProductsList);
+
+//Purchases
+router.post("/CreatePurchases",AuthVerifyMiddleware,PurchasesController.CreatePurchases);
+router.get("/PurchasesList/:pageNo/:perPage/:searchKeyword",AuthVerifyMiddleware,PurchasesController.PurchasesList);
+router.get("/PurchasesDelete/:id",AuthVerifyMiddleware,PurchasesController.PurchasesDelete);
+
+//Sales
+router.post("/CreateSales",AuthVerifyMiddleware,SalesController.CreateSales);
+router.get("/SalesList/:pageNo/:perPage/:searchKeyword",AuthVerifyMiddleware,SalesController.SalesList);
+router.get("/SaleDelete/:id",AuthVerifyMiddleware,SalesController.SaleDelete);
 
 //Return
-router.post("/CreateReturn",AuthVerifyMiddleware,ReturnController.CreateReturn);
-router.get("/ReadReturn",AuthVerifyMiddleware,ReturnController.ReadReturn);
-router.get("/ReadReturnProducts/:ReturnID",AuthVerifyMiddleware,ReturnController.ReadReturnProducts);
-router.get("/DeleteReturn/:ReturnID",AuthVerifyMiddleware,ReturnController.DeleteReturn);
+router.post("/CreateReturns",AuthVerifyMiddleware,ReturnsController.CreateReturns);
+router.get("/ReturnsList/:pageNo/:perPage/:searchKeyword",AuthVerifyMiddleware,ReturnsController.ReturnsList);
+router.get("/ReturnDelete/:id",AuthVerifyMiddleware,ReturnsController.ReturnDelete);
+
+module.exports=router;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 module.exports=router;

@@ -21,6 +21,12 @@ app.use(helmet())
 app.use(mongoSanitize())
 app.use(xss())
 app.use(hpp())
+
+app.use(express.json({limit: '50mb'}));
+app.use(express.urlencoded({limit: '50mb'}));
+
+
+
 // Body Parser Implement
 app.use(bodyParser.json())
 
@@ -29,13 +35,12 @@ const limiter= rateLimit({windowMs:15*60*1000,max:3000})
 app.use(limiter)
 
 // Mongo DB Database Connection
-let URI="mongodb://127.0.0.1:27017/Inventory";
-let OPTION={autoIndex:true}
+let URI="mongodb+srv://<username>:<password>@cluster0.7uslu.mongodb.net/inventory?retryWrites=true&w=majority";
+let OPTION={user:'testuser7777',pass:'testuser7777',autoIndex:true}
 mongoose.connect(URI,OPTION,(error)=>{
     console.log("Connection Success")
     console.log(error)
 })
-
 
 
 // Routing Implement
