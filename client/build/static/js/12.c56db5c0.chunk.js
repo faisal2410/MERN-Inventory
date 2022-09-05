@@ -1,0 +1,2 @@
+(this["webpackJsonpclient-side"]=this["webpackJsonpclient-side"]||[]).push([[12],{424:function(e,s,n){"use strict";n.r(s);n(2);var t=n.p+"static/media/404.2d47255f.png",a=n(1);s.default=function(){return Object(a.jsx)("div",{className:"center-screen animated fadeIn",children:Object(a.jsx)("img",{className:"animated fadeIn",src:t})})}}}]);
+//# sourceMappingURL=12.c56db5c0.chunk.js.map

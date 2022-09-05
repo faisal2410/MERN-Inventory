@@ -1,9 +1,11 @@
 import {configureStore} from "@reduxjs/toolkit";
-import productReducer from "../state-slice/product-slice";
 import settingsReducer from "../state-slice/settings-slice";
+import profileReducer from "../state-slice/profile-slice";
+import dashboardReducer from "../state-slice/dashboard-slice";
 export default configureStore({
     reducer:{
         settings:settingsReducer,
-        product:productReducer,
+        dashboard:dashboardReducer,
+        profile:profileReducer
     }
 })
