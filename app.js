@@ -15,7 +15,7 @@ const cors =require('cors');
 
 // Database Lib Import
 const mongoose =require('mongoose');
-
+app.use(express.static('client/build'));
 
 // Security Middleware Implement
 app.use(cors())
