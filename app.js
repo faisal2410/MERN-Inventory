@@ -1,5 +1,6 @@
 // Basic Lib Import
 const express =require('express');
+const path = require("path");
 const router =require('./src/routes/api');
 const app= new express();
 const bodyParser =require('body-parser');
@@ -14,7 +15,7 @@ const cors =require('cors');
 
 // Database Lib Import
 const mongoose =require('mongoose');
-const path = require("path");
+
 
 // Security Middleware Implement
 app.use(cors())

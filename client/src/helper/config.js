@@ -1,1 +1,1 @@
-export  const BaseURL="/";
+export  const BaseURL="";
