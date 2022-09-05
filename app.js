@@ -15,7 +15,7 @@ const cors =require('cors');
 
 // Database Lib Import
 const mongoose =require('mongoose');
-app.use(express.static('/home/bas/app_289ca492-5cbd-4dbe-b0f7-11fad009cf0d/client/build'));
+app.use(express.static('client/build'));
 
 // Security Middleware Implement
 app.use(cors())
@@ -45,7 +45,7 @@ app.use("/api/v1",router)
 
 // Add React Front End Routing
 app.get('*',function (req,res) {
-    res.sendFile('/home/bas/app_289ca492-5cbd-4dbe-b0f7-11fad009cf0d/client/build/index.html')
+    res.sendFile(path.resolve(__dirname,'client','build','index.html'))
 })
 
 module.exports=app;

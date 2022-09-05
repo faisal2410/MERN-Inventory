@@ -1,16 +1,22 @@
 const mongoose=require('mongoose');
 const DataSchema=mongoose.Schema(
     {
-    ProductName:{type:String},
-    ProductCode:{type:String},
-    Img:{type:String},
-    UnitPrice:{type:String},
-    Qty:{type:String},
-    TotalPrice:{type:String},
-    CreatedDate:{type:Date,default:Date.now()}
+        id:{type:Number},
+        title:{type:String},
+        price:{type:String},
+        special_price:{type:String},
+        image:{type:String},
+        category:{type:String},
+        subcategory:{type:String},
+        remark:{type:String},
+        brand:{type:String},
+        shop:{type:String},
+        shop_name:{type:String},
+        star:{type:String},
+        product_code:{type:String},
+        stock:{type:String}
     },
     {versionKey:false}
 );
-
 const ProductsModel=mongoose.model('products',DataSchema);
 module.exports=ProductsModel;

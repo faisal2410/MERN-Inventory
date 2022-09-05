@@ -1,73 +1,47 @@
 const ProductsModel=require('../models/ProductsModel');
 
-// C=Create
-exports.CreateProduct=(req,res)=>{
-   let reqBody= req.body;
-    ProductsModel.create(reqBody,(err,data)=>{
-        if(err){
-            res.status(400).json({status:"fail",data:err})
-        }
-        else{
-            res.status(200).json({status:"success",data:data})
-        }
-    })
-}
+exports.ProductList=async (req, res) => {
 
-// R=Read
-exports.ReadProduct=(req,res)=>{
-    ProductsModel.find((err,data)=>{
-        if(err){
-            res.status(400).json({status:"fail",data:err})
-        }
-        else{
-            res.status(200).json({status:"success",data:data})
-        }
-    })
-}
+    try{
+        let pageNo = Number(req.params.pageNo);
+        let perPage = Number(req.params.perPage);
+        let searchValue = req.params.searchKeyword;
+        let skipRow = (pageNo - 1) * perPage;
 
-// R=Read By ID
-exports.ReadProductByID=(req,res)=>{
-    let id= req.params.id;
-    let Query={_id:id};
-    ProductsModel.find(Query,(err,data)=>{
-        if(err){
-            res.status(400).json({status:"fail",data:err})
-        }
-        else{
-            res.status(200).json({status:"success",data:data})
-        }
-    })
-}
+        let data;
+
+        if (searchValue!=="0") {
+
+            let SearchRgx = {"$regex": searchValue, "$options": "i"}
+            let SearchQuery = {$or: [{title: SearchRgx}]}
+
+            data = await ProductsModel.aggregate([{
+                $facet:{
+                    Total:[{$match: SearchQuery},{$count: "count"}],
+                    Rows:[{$match: SearchQuery},{$skip: skipRow}, {$limit: perPage}],
+                }
+            }])
 
 
-// U=Update
-
-exports.UpdateProduct=(req,res)=>{
-   let id= req.params.id;
-   let Query={_id:id};
-   let reqBody=req.body;
-   ProductsModel.updateOne(Query,reqBody,(err,data)=>{
-       if(err){
-           res.status(400).json({status:"fail",data:err})
-       }
-       else{
-           res.status(200).json({status:"success",data:data})
-       }
-   })
-}
-
-
-// D=Delete
-exports.DeleteProduct=(req,res)=>{
-    let id= req.params.id;
-    let Query={_id:id};
-    ProductsModel.remove(Query,(err,data)=>{
-        if(err){
-            res.status(400).json({status:"fail",data:err})
         }
-        else{
-            res.status(200).json({status:"success",data:data})
+        else {
+
+            data = await ProductsModel.aggregate([{
+                $facet:{
+                    Total:[{$count: "count"}],
+                    Rows:[{$skip: skipRow}, {$limit: perPage}],
+                }
+            }])
+
         }
-    })
+
+        res.status(200).json({status: "success",data})
+
+    }
+
+    catch (error) {
+        res.status(200).json({status: "fail",error:error})
+    }
+
 }
 
