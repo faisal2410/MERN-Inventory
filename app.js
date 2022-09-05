@@ -37,9 +37,8 @@ const limiter= rateLimit({windowMs:15*60*1000,max:3000})
 app.use(limiter)
 
 // Mongo DB Database Connection
-let URI="mongodb+srv://<username>:<password>@cluster0.7uslu.mongodb.net/inventory?retryWrites=true&w=majority";
-let OPTION={user:'testuser7777',pass:'testuser7777',autoIndex:true}
-mongoose.connect(URI,OPTION,(error)=>{
+let URI="mongodb://umqqdejfxaoh6afhykfq:pMZGHz50Jt9OdpkwNqlD@n1-c2-mongodb-clevercloud-customers.services.clever-cloud.com:27017,n2-c2-mongodb-clevercloud-customers.services.clever-cloud.com:27017/bfhvwsq0c8kcumk?replicaSet=rs0";
+mongoose.connect(URI,(error)=>{
     console.log("Connection Success")
     console.log(error)
 })
