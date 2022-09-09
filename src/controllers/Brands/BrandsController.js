@@ -35,7 +35,6 @@ exports.BrandDetailsByID=async (req, res) => {
 
 
 
-
 exports.BrandDropDown=async (req, res) => {
     let Result= await DropDownService(req,DataModel,{_id:1,Name:1})
     res.status(200).json(Result)

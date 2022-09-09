@@ -4,6 +4,8 @@ import {useSelector} from "react-redux";
 import {Link} from "react-router-dom";
 import {AiOutlineEdit, AiOutlineEye} from "react-icons/all";
 import ReactPaginate from "react-paginate";
+import CurrencyFormat from "react-currency-format";
+import moment from "moment/moment";
 
 const SalesList = () => {
     let [searchKeyword,setSearchKeyword]=useState("0");
@@ -55,7 +57,7 @@ const SalesList = () => {
                                 <div className="container-fluid">
                                     <div className="row">
                                         <div className="col-4">
-                                            <h5> List</h5>
+                                            <h5>Sales List</h5>
                                         </div>
 
                                         <div className="col-2">
@@ -84,10 +86,14 @@ const SalesList = () => {
                                                 <table className="table ">
                                                     <thead className="sticky-top bg-white">
                                                     <tr>
-                                                        <th className="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Title</th>
-                                                        <th className="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Title</th>
-                                                        <th className="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Title</th>
-                                                        <th className="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
+                                                        <td className="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Customer</td>
+                                                        <td className="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Grand Total</td>
+                                                        <td className="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Shipping Cost</td>
+                                                        <td className="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Vat/Tax</td>
+                                                        <td className="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Other Cost</td>
+                                                        <td className="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Discount</td>
+                                                        <td className="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Date</td>
+                                                        <td className="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</td>
                                                     </tr>
                                                     </thead>
                                                     <tbody>
@@ -95,23 +101,45 @@ const SalesList = () => {
                                                         DataList.map((item,i)=>
                                                             <tr>
                                                                 <td>
-                                                                    <div className="d-flex px-2 py-1">
-                                                                        <div className="d-flex flex-column justify-content-center">
-                                                                            <h6 className="mb-0  text-xs">A</h6>
-                                                                            <p className="text-xs  text-secondary mb-0">A</p>
-                                                                        </div>
-                                                                    </div>
+                                                                    <p className="text-xs text-start">{item.customers[0]['CustomerName']}</p>
                                                                 </td>
+
                                                                 <td>
-                                                                    <p className="badge  bg-gradient-success">A</p>
+                                                                    <p className="text-xs text-start">
+                                                                        <CurrencyFormat value={item.GrandTotal} displayType={'text'} thousandSeparator={true} prefix={'$'} />
+                                                                    </p>
                                                                 </td>
+
                                                                 <td>
-                                                                    <p className="badge  bg-gradient-success">A</p>
+                                                                    <p className="text-xs text-start">
+                                                                        <CurrencyFormat value={item.ShippingCost} displayType={'text'} thousandSeparator={true} prefix={'$'} />
+                                                                    </p>
                                                                 </td>
+
                                                                 <td>
-                                                                    <Link to={"/new-bond?instrumentID"} className="btn text-info btn-outline-light p-2 mb-0 btn-sm">
-                                                                        <AiOutlineEdit size={15} />
-                                                                    </Link>
+                                                                    <p className="text-xs text-start">
+                                                                        <CurrencyFormat value={item.VatTax} displayType={'text'} thousandSeparator={true} prefix={'$'} />
+                                                                    </p>
+                                                                </td>
+
+                                                                <td>
+                                                                    <p className="text-xs text-start">
+                                                                        <CurrencyFormat value={item.OtherCost} displayType={'text'} thousandSeparator={true} prefix={'$'} />
+                                                                    </p>
+                                                                </td>
+
+                                                                <td>
+                                                                    <p className="text-xs text-start">
+                                                                        <CurrencyFormat value={item.Discount} displayType={'text'} thousandSeparator={true} prefix={'$'} />
+                                                                    </p>
+                                                                </td>
+
+
+                                                                <td>
+                                                                    <p className="text-xs text-start">{moment(item.CreatedDate).format('MMMM Do YYYY')}</p>
+                                                                </td>
+
+                                                                <td>
                                                                     <button onClick={DetailsPopUp.bind(this,item)} className="btn btn-outline-light text-success p-2 mb-0 btn-sm ms-2">
                                                                         <AiOutlineEye size={15} />
                                                                     </button>

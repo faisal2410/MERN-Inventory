@@ -86,32 +86,24 @@ const SupplierList = () => {
                                                 <table className="table ">
                                                     <thead className="sticky-top bg-white">
                                                     <tr>
-                                                        <th className="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Title</th>
-                                                        <th className="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Title</th>
-                                                        <th className="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Title</th>
-                                                        <th className="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
+                                                        <td className="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">#No</td>
+                                                        <td className="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Name</td>
+                                                        <td className="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Phone</td>
+                                                        <td className="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Email</td>
+                                                        <td className="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</td>
                                                     </tr>
                                                     </thead>
                                                     <tbody>
                                                     {
                                                         DataList.map((item,i)=>
                                                             <tr>
+                                                                <td><p className="text-xs text-start">{i+1}</p></td>
+                                                                <td><p className="text-xs text-start">{item.Name}</p></td>
+                                                                <td><p className="text-xs text-start">{item.Phone}</p></td>
+                                                                <td><p className="text-xs text-start">{item.Email}</p></td>
+
                                                                 <td>
-                                                                    <div className="d-flex px-2 py-1">
-                                                                        <div className="d-flex flex-column justify-content-center">
-                                                                            <h6 className="mb-0  text-xs">A</h6>
-                                                                            <p className="text-xs  text-secondary mb-0">A</p>
-                                                                        </div>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <p className="badge  bg-gradient-success">A</p>
-                                                                </td>
-                                                                <td>
-                                                                    <p className="badge  bg-gradient-success">A</p>
-                                                                </td>
-                                                                <td>
-                                                                    <Link to={"/new-bond?instrumentID"} className="btn text-info btn-outline-light p-2 mb-0 btn-sm">
+                                                                    <Link to={`/SupplierCreateUpdatePage?id=${item._id}`} className="btn text-info btn-outline-light p-2 mb-0 btn-sm">
                                                                         <AiOutlineEdit size={15} />
                                                                     </Link>
                                                                     <button onClick={DetailsPopUp.bind(this,item)} className="btn btn-outline-light text-success p-2 mb-0 btn-sm ms-2">
