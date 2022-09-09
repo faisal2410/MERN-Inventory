@@ -34,6 +34,7 @@ export async function RegistrationRequest(email,firstName,lastName,mobile,passwo
         let URL=BaseURL+"/Registration";
         let PostBody={email:email,firstName:firstName,lastName:lastName,mobile:mobile,password:password, photo:photo}
         let res=await axios.post(URL,PostBody)
+        store.dispatch(HideLoader())
         if(res.status===200){
             if(res.data['status']==="fail"){
                 if(res.data['data']['keyPattern']['email']===1){
@@ -189,7 +190,6 @@ export async function RecoverResetPassRequest(email,OTP,password){
             ErrorToast("Something Went Wrong")
             return false;
         }
-
     }
     catch (e) {
         ErrorToast("Something Went Wrong")

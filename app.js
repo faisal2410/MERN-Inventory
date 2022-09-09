@@ -36,7 +36,7 @@ const limiter= rateLimit({windowMs:15*60*1000,max:3000})
 app.use(limiter)
 
 // Mongo DB Database Connection
-let URI="mongodb://uxx32zijdhvs9rdemju0:PMz1bHlpUw6Gbh2ZXRYZ@n1-c2-mongodb-clevercloud-customers.services.clever-cloud.com:27017,n2-c2-mongodb-clevercloud-customers.services.clever-cloud.com:27017/bvxvnch8thwipzw?replicaSet=rs0";
+let URI="mongodb+srv://testuser7777:testuser7777@cluster0.7uslu.mongodb.net/inventory?retryWrites=true&w=majority";
 mongoose.connect(URI,(error)=>{
     console.log("Connection Success")
     console.log(error)
@@ -49,8 +49,6 @@ app.use("/api/v1",router)
 app.get('*',function (req,res) {
     res.sendFile(path.resolve(__dirname,'client','build','index.html'))
 })
-
-
 
 module.exports=app;
 

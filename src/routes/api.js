@@ -33,6 +33,8 @@ router.post("/UpdateBrand/:id",AuthVerifyMiddleware,BrandsController.UpdateBrand
 router.get("/BrandList/:pageNo/:perPage/:searchKeyword",AuthVerifyMiddleware,BrandsController.BrandList);
 router.get("/BrandDropDown",AuthVerifyMiddleware,BrandsController.BrandDropDown);
 router.get("/DeleteBrand/:id",AuthVerifyMiddleware,BrandsController.DeleteBrand);
+router.get("/BrandDetailsByID/:id",AuthVerifyMiddleware,BrandsController.BrandDetailsByID);
+
 
 // Categories
 router.post("/CreateCategories",AuthVerifyMiddleware,CategoriesController.CreateCategories);
